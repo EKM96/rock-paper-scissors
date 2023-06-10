@@ -2,6 +2,7 @@ let computerSelection,
     playerSelection;
 
 
+
 // Create a function that takes "computerSelection" and "playerSelection" as parameters and  
 // returns a string that declares the result (win, loss or tie) of the round.
 function playRound (playerSelection, computerSelection) {
@@ -29,38 +30,34 @@ function playRound (playerSelection, computerSelection) {
         return item;
     }
 
-
-    if (playerSelection === "rock" && computerSelection === "scissors") {
-        let result = console.log(`You win this round! \n${playerSelection} beats ${computerSelection}`);
-        return result;
-    }   else if (playerSelection === "paper" && computerSelection === "rock") {
-        let result = console.log(`You win this round!" \n${playerSelection} beats ${computerSelection}`);
-        return result;
-    } else if (playerSelection === "scissors" && computerSelection === "paper") {
-        let result = console.log(`You win this round! \n${playerSelection} beats ${computerSelection}`);
-        return result;
-    } else if (playerSelection === "rock" && computerSelection === "paper") {
-        let result = console.log(`You lose this round! \n${playerSelection} loses against ${computerSelection}`);
-        return result;
-    } else if (playerSelection === "paper" && computerSelection === "scissors") {
-        let result = console.log(`You lose this round! \n${playerSelection} loses against ${computerSelection}`);
-        return result;
-    } else if (playerSelection === "scissors" && computerSelection === "rock") {
-        let result = console.log(`You lose this round! \n${playerSelection} loses against ${computerSelection}`);
-        return result; 
-    } else {
-        let result = console.log(`It's a tie! \n${playerSelection} ties against ${computerSelection} `);
-        return result;
-    }
+    // Create  the variables that contain the possible outcomes of each game round
+    let win = playerSelection === "rock" && computerSelection === "scissors" ||
+        playerSelection === "paper" && computerSelection === "rock" ||
+        playerSelection === "scissors" && computerSelection === "paper"; 
     
-} 
-
+    let lose = playerSelection === "rock" && computerSelection === "paper" || 
+        playerSelection === "paper" && computerSelection === "scissors" || 
+        playerSelection === "scissors" && computerSelection === "rock";
     
+    let gameResult = win || lose || "tie";
 
-for (let i=0; i<5; i++) {
-    playRound (playerSelection, computerSelection);
-}
-
-
-
-
+    // Create a switch statement that evaluates againts the game result to print a message
+    switch (gameResult) {
+        case win: {
+            let result = `You win this round! \n${playerSelection} beats ${computerSelection}`;
+            console.log(result);
+            break;
+            
+        }
+        case lose: {
+            let result = `You lose this round! \n${playerSelection} loses against ${computerSelection}`;
+            console.log(result);
+            break;
+        }
+        default: {
+            let result = `It's a tie! \n${playerSelection} ties against ${computerSelection}`;
+            console.log(result);  
+        }
+        
+    }   
+}   
