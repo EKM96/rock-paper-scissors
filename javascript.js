@@ -1,91 +1,85 @@
-let computerSelection,
-   playerSelection;
+const buttons = document.querySelectorAll("button");
+const roundResult = document.querySelector("#round-result");
+const score = document.querySelector("#score")
+const finalResult = document.querySelector("#final-result");
 
-let playerScore= 0;
-let computerScore= 0;
+
+buttons.forEach((button) => {
+    button.addEventListener("click", playRound);
+});
 
 
-// Create a function that takes "computerSelection" and "playerSelection" as parameters and  
-// returns a string that declares the result (win, loss or tie) of the round.
-function playRound (playerSelection, computerSelection) {
+function playRound (e) {
+    let idValue = e.target.id;
+    let computerSelection = getComputerChoice ();
+    let playerSelection = getPlayerChoice();
+    let playerScore = 0;
+    let computerScore= 0;
 
-    playerSelection = getPlayerChoice ();
-    computerSelection = getComputerChoice ();
-    
-
-    // Create a function that prompts the user to choose between "rock", "paper" or "scissors" 
-    // and converts the prompt to lower case
     function getPlayerChoice () {
-        return prompt('Choose Rock, Paper, or Scissors', "").toUpperCase();
+        switch (idValue) {
+            case "rock": {
+                return "rock";      
+            }
+            case "paper": {
+                return "paper" 
+            }
+            case "scissors": {
+                return "scissors"
+            }    
+        }
     }
 
-
-    // Create a function that randomly returns either "rock", "paper", or "scissors"
     function getComputerChoice () {
-        let choice = ['ROCK', 'PAPER', 'SCISSORS'];
+        let choice = ['rock', 'paper', 'scissors'];
 
         // get random index value
         let randomIndex = Math.floor(Math.random()*choice.length);
 
         // get random item
-        let item = choice[randomIndex];
-        return item;
+        let randomItem = choice[randomIndex];
+        return randomItem;
     }
 
-    
     // Create the variables that contains the possible outcomes of each game round
-    let win = playerSelection === "ROCK" && computerSelection === "SCISSORS" ||
-        playerSelection === "PAPER" && computerSelection === "ROCK" ||
-        playerSelection === "SCISSORS" && computerSelection === "PAPER"; 
+    let win = playerSelection === "rock" && computerSelection === "scissors" ||
+        playerSelection === "paper" && computerSelection === "rock" ||
+        playerSelection === "scissors" && computerSelection === "paper"; 
     
-    let lose = playerSelection === "ROCK" && computerSelection === "PAPER" || 
-        playerSelection === "PAPER" && computerSelection === "SCISSORS" || 
-        playerSelection === "SCISSORS" && computerSelection === "ROCK";
+    let lose = playerSelection === "rock" && computerSelection === "paper" || 
+        playerSelection === "paper" && computerSelection === "scissors" || 
+        playerSelection === "scissors" && computerSelection === "rock";
     
-    let gameResult = win || lose || "tie";
+    let tie = playerSelection === "rock" && computerSelection === "rock" ||
+        playerSelection === "paper" && computerSelection === "paper" ||
+        playerSelection === "scissors" && computerSelection === "scissors"
     
+    let gameResult = win || lose || tie;
 
     // Create a switch statement that evaluates againts the game result to print the result and keep the score of each round 
     switch (gameResult) {
         case win: {
             let printResult = `You win this round! \n${playerSelection} beats ${computerSelection}`;
-            console.log(printResult);
+            roundResult.textContent = printResult;
             ++playerScore;
             break;
             
         }
         case lose: {
             let printResult = `You lose this round! \n${playerSelection} loses against ${computerSelection}`;
-            console.log(printResult);
+            roundResult.textContent = printResult;
             ++computerScore;
             break;
         }
-        default: {
+        case tie: {
             let printResult = `It's a tie! \n${playerSelection} ties against ${computerSelection}`;
-            console.log(printResult);  
+            roundResult.textContent = printResult;
+            break;  
         }
         
     }  
-    
-    // Print the score of each round 
-    console.log(`Player: ${playerScore} vs  Computer: ${computerScore}`);
-}   
-
-
-//Create a function that plays 5 rounds of the game and prints the final result
-function game() {
-    for (let i=0; i<5; i++) {
-        playRound (playerSelection, computerSelection);
-    }
-
-    if (playerScore>computerScore) {
-        console.log('You WON the game!');
-    } else if (playerScore<computerScore) {
-        console.log('You LOSE the game!');
-    } else {
-        console.log('You TIED the game!');
-    }
+        
+    // Prints the score of each round 
+    score.textContent = `Player: ${playerScore} vs  Computer: ${computerScore}`;
 }
-
-game();
 
