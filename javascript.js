@@ -4,7 +4,19 @@ const roundResult = document.querySelector("#round-result");
 const score = document.querySelector("#score")
 const finalResult = document.querySelector("#final-result");
 const buttonsContainer = document.querySelector("#buttons-container");
-const resultsContainer = document.querySelector("#results-container")
+const resultsContainer = document.querySelector("#results-container");
+const playAgainButton = document.querySelector("#again-button");
+
+playAgainButton.addEventListener("click", ()=> {
+    playAgainButton.classList.toggle("hidden");
+    buttonsContainer.classList.toggle("hidden");
+    roundResult.textContent = "";
+    score.textContent = "";
+    finalResult.textContent = "";
+});
+
+
+
 
 // Initial playing score
 let playerScore = 0;
@@ -55,23 +67,20 @@ function playRound (e) {
     // Create a switch statement that evaluates againts the game result and then prints the result and keep the score of each round 
     switch (gameResult) {
         case win: {
-            let printResult = `You WIN this round! \n${playerSelection} beats ${computerSelection}`;
             // Add the printResult text to the previously empty round-result div element
-            roundResult.textContent = printResult;
+            roundResult.textContent = `You WIN this round! \n${playerSelection} beats ${computerSelection}`;
             // Add a point to playerScore variable  
             ++playerScore;
             break;
             
         }
         case lose: {
-            let printResult = `You LOSE this round! \n${playerSelection} loses against ${computerSelection}`;
-            roundResult.textContent = printResult;
+            roundResult.textContent = `You LOSE this round! \n${playerSelection} loses against ${computerSelection}`;
             ++computerScore;
             break;
         }
         case tie: {
-            let printResult = `It's a TIE! \n${playerSelection} ties against ${computerSelection}`;
-            roundResult.textContent = printResult;
+            roundResult.textContent = `It's a TIE! \n${playerSelection} ties against ${computerSelection}`;
             break;  
         }
         
@@ -85,53 +94,39 @@ function playRound (e) {
     if (playerScore === 5) {
         finalResult.textContent = "You ROCK!!, \nYou WON THE GAME!!";
         playAgain();
+        // Restart the score
+
 
     }
 
     if (computerScore === 5) {
+
         finalResult.textContent = "You LOSE the game!!";
         playAgain();
+        // Restart the score
+
 
     }
     
     
 
     function playAgain () {
-        // Restart the score
+        // Remove the rock, paper and scissors buttons
+        buttonsContainer.classList.toggle("hidden");
+        // Toggles class "hidden" OFF (makes the button visible) 
+        playAgainButton.classList.toggle("hidden");
         playerScore = 0;
         computerScore = 0;
 
-        // Remove the rock, paper and scissors buttons
-        buttonsContainer.classList.toggle("hidden");
-        
-        // Create a start again button element
-        const startAgainButton = document.createElement("button")
-        // Add text to play again button
-        startAgainButton.textContent = "Play again!";
-        // Add an idd attribute to the button
-        startAgainButton.setAttribute("id", "play-again");
-        // Add play Again button to DOM
-        document.body.appendChild(startAgainButton);
-
-
-        const playAgainButton = document.querySelector("#play-again");
-        playAgainButton.addEventListener("click", ()=> {
-            playAgainButton.classList.toggle("hidden");
-            buttonsContainer.classList.toggle("hidden");
-            roundResult.textContent = "";
-            score.textContent = "";
-            finalResult.textContent = "";
-        });
     }
 
 
 
 }
     
+
+
+
     
-
-
-    
-
 
 
