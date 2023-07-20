@@ -92,7 +92,7 @@ function playRound (e) {
 
     // When either the player or computer reaches 5 points
     if (playerScore === 5) {
-        finalResult.textContent = "You ROCK!!, \nYou WON THE GAME!!";
+        finalResult.textContent = "You ROCK!! \nYou WON THE GAME!!";
         playAgain();
         // Restart the score
 
