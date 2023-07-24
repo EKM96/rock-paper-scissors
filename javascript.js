@@ -16,6 +16,14 @@ playAgainButton.addEventListener("click", ()=> {
     finalResult.textContent = "";
 });
 
+buttons.forEach(button => button.addEventListener("transitionend", removeTransition));
+function removeTransition(e) {
+    if (e.propertyName !== "transform") {   //skip it if it's not a transform
+        return          
+    } else {
+        this.classList.remove("clicked");
+    }
+}
 
 
 
@@ -117,6 +125,7 @@ function playRound (e) {
         buttonsContainer.classList.toggle("hidden");
         // Toggles class "hidden" OFF (makes the button visible) 
         playAgainButton.classList.toggle("hidden");
+        e.target.classList.toggle("clicked");
         playerScore = 0;
         computerScore = 0;
 
