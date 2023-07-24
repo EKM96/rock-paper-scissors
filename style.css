@@ -32,7 +32,8 @@ body {
 
     color: rgb(209, 45, 100);
 }
-div#buttons-container { 
+
+.displayed { 
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
@@ -43,10 +44,7 @@ div#results-container {
     margin-bottom: 30px;
 }
 
-.clicked {
-    transform: scale(1.5);
-    color: #ffc600;
-}
+
 
 #buttons-container button,
 button#again-button {

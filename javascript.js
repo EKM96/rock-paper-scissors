@@ -8,6 +8,7 @@ const resultsContainer = document.querySelector("#results-container");
 const playAgainButton = document.querySelector("#again-button");
 
 playAgainButton.addEventListener("click", ()=> {
+    buttonsContainer.classList.toggle("displayed");
     playAgainButton.classList.toggle("hidden");
     buttonsContainer.classList.toggle("hidden");
     roundResult.textContent = "";
@@ -29,7 +30,7 @@ buttons.forEach((button) => {
 
 
 function playRound (e) {
-
+    e.target.classList.toggle("clicked");
     // A variable containing the clicked option id attribute (rock, paper or scissors);
     let playerSelection = e.target.id;
 
@@ -111,6 +112,7 @@ function playRound (e) {
     
 
     function playAgain () {
+        buttonsContainer.classList.toggle("displayed");
         // Remove the rock, paper and scissors buttons
         buttonsContainer.classList.toggle("hidden");
         // Toggles class "hidden" OFF (makes the button visible) 
