@@ -65,7 +65,7 @@ body {
     font-size: 28px;
     --b: 6px;   /* border thickness */
     --color: white;
-    transition: all .8s;
+    transition: all .5s;
     }
 
 
