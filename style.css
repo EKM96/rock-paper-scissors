@@ -1,19 +1,30 @@
 html {
-    display: flex;
     height: 100%;
+    
     font-family: 'Permanent Marker', cursive;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+
 }
 
 body {
+    height: 100%;
     background-image: url("images/chalck-board.jpg");
     background-size: 100% auto;
     background-color: rgb(2, 46, 2);
     color: white;
     width: 100%;
     font-size: 26px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    
+}
+
+#instructions {
+   
+    height: 30%;
+    color: turquoise;
+    
+
 }
 
 .displayed { 
@@ -25,6 +36,7 @@ body {
 #results-container {
     margin-top: 30px;
     margin-bottom: 30px;
+    text-align: center;
 }
 
 .format {
@@ -61,6 +73,7 @@ body {
     font-size: 22px; 
     --b: 4px;   /* border thickness */
     --color: rgb(100, 7, 250);
+    align-self: center;
 }
 
 .hidden {
