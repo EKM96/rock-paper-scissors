@@ -27,6 +27,16 @@ body {
 
 }
 
+#player-header,
+#computer-header {
+    font-size: 18px;
+}
+
+#player-score,
+#computer-score{
+    font-size: 48px;
+}
+
 .displayed { 
     display: flex;
     justify-content: space-around;
@@ -82,6 +92,9 @@ body {
 
 #round-result {
     color: #cf4707e0;
+    white-space: pre;   /*to be able to make a line break in textContent of element*/
+    margin-top: 20px;
+
 }
 
 #final-result {  
@@ -90,7 +103,20 @@ body {
 
 #score {
     color: rgb(209, 45, 100);
+    height: 92px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+
 }
+
+#score-separator {
+    font-size: 100px;
+    align-self: center;
+    margin-right: 10px;
+ 
+}
+
 
 .clicked {
     transform: skewX(-8deg) scale(1.3);

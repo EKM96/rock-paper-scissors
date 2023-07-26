@@ -1,19 +1,27 @@
 // List of query selectors
 const buttons = document.querySelectorAll("#buttons-container button");
 const roundResult = document.querySelector("#round-result");
-const score = document.querySelector("#score")
+
 const finalResult = document.querySelector("#final-result");
 const buttonsContainer = document.querySelector("#buttons-container");
 const resultsContainer = document.querySelector("#results-container");
 const playAgainButton = document.querySelector("#again-button");
+const playerHeader = document.querySelector("#player-header");
+const scoreSeparator = document.querySelector("#score-separator")
+const computerHeader = document.querySelector("#computer-header");
+const playerScoreSelector = document.querySelector("#player-score");
+const computerScoreSelector = document.querySelector("#computer-score");
+
+
 
 playAgainButton.addEventListener("click", ()=> {
     buttonsContainer.classList.toggle("displayed");
     playAgainButton.classList.toggle("hidden");
     buttonsContainer.classList.toggle("hidden");
     roundResult.textContent = "";
-    score.textContent = "";
     finalResult.textContent = "";
+    playerScoreSelector.textContent = `${playerScore}`;
+    computerScoreSelector.textContent = `${computerScore}`;
 });
 
 buttons.forEach(button => button.addEventListener("transitionend", removeTransition));
@@ -30,6 +38,9 @@ function removeTransition(e) {
 // Initial playing score
 let playerScore = 0;
 let computerScore = 0;
+
+playerScoreSelector.textContent = `${playerScore}`;
+computerScoreSelector.textContent = `${computerScore}`;
 
 // Add a play round function to each playing  option button 
 buttons.forEach((button) => {
@@ -77,26 +88,30 @@ function playRound (e) {
     switch (gameResult) {
         case win: {
             // Add the printResult text to the previously empty round-result div element
-            roundResult.textContent = `You WIN this round! \n${playerSelection} beats ${computerSelection}`;
+            roundResult.textContent = `You WIN this round! \r\n${playerSelection} beats ${computerSelection}`;
             // Add a point to playerScore variable  
             ++playerScore;
             break;
             
         }
         case lose: {
-            roundResult.textContent = `You LOSE this round! \n${playerSelection} loses against ${computerSelection}`;
+            roundResult.textContent = `You LOSE this round! \r\n${playerSelection} loses against ${computerSelection}`;
             ++computerScore;
             break;
         }
         case tie: {
-            roundResult.textContent = `It's a TIE! \n${playerSelection} ties against ${computerSelection}`;
+            roundResult.textContent = `It's a TIE! \r\n${playerSelection} ties against ${computerSelection}`;
             break;  
         }
         
     }  
         
     // Print the score of each round 
-    score.textContent = `Player: ${playerScore} vs  Computer: ${computerScore}`;
+    //score.textContent = `Player: ${playerScore} vs  Computer: ${computerScore}`;
+    playerScoreSelector.textContent = `${playerScore}`;
+    computerScoreSelector.textContent = `${computerScore}`;
+
+
 
 
     // When either the player or computer reaches 5 points
