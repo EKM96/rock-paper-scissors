@@ -13,6 +13,8 @@ const playerScoreSelector = document.querySelector("#player-score");
 const computerScoreSelector = document.querySelector("#computer-score");
 const instructions = document.querySelector("#instructions");
 const buttonsAudio = document.querySelector("#buttons-audio");
+const loseAudio = document.querySelector("#lose-audio");
+const winAudio = document.querySelector("#win-audio");
 
 
 
@@ -124,6 +126,7 @@ function playRound (e) {
     // When either the player or computer reaches 5 points
     if (playerScore === 5) {
         finalResult.textContent = "You ROCK!! \nYou WON THE GAME!!";
+        winAudio.play();
         playAgain();
         // Restart the score
 
@@ -133,6 +136,7 @@ function playRound (e) {
     if (computerScore === 5) {
 
         finalResult.textContent = "You LOSE the game!!";
+        loseAudio.play();
         playAgain();
         // Restart the score
 
