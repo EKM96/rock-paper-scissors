@@ -12,10 +12,12 @@ const computerHeader = document.querySelector("#computer-header");
 const playerScoreSelector = document.querySelector("#player-score");
 const computerScoreSelector = document.querySelector("#computer-score");
 const instructions = document.querySelector("#instructions");
+const buttonsAudio = document.querySelector("#buttons-audio");
 
 
 
 playAgainButton.addEventListener("click", ()=> {
+    buttonsAudio.play();
     buttonsContainer.classList.toggle("displayed");
     playAgainButton.classList.toggle("hidden");
     buttonsContainer.classList.toggle("hidden");
@@ -52,6 +54,8 @@ buttons.forEach((button) => {
 
 
 function playRound (e) {
+    buttonsAudio.play();
+    
     e.target.classList.toggle("clicked");
     // A variable containing the clicked option id attribute (rock, paper or scissors);
     let playerSelection = e.target.id;
