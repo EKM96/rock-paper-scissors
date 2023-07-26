@@ -11,6 +11,7 @@ const scoreSeparator = document.querySelector("#score-separator")
 const computerHeader = document.querySelector("#computer-header");
 const playerScoreSelector = document.querySelector("#player-score");
 const computerScoreSelector = document.querySelector("#computer-score");
+const instructions = document.querySelector("#instructions");
 
 
 
@@ -18,10 +19,12 @@ playAgainButton.addEventListener("click", ()=> {
     buttonsContainer.classList.toggle("displayed");
     playAgainButton.classList.toggle("hidden");
     buttonsContainer.classList.toggle("hidden");
+    instructions.classList.toggle("hidden");
     roundResult.textContent = "";
     finalResult.textContent = "";
     playerScoreSelector.textContent = `${playerScore}`;
     computerScoreSelector.textContent = `${computerScore}`;
+
 });
 
 buttons.forEach(button => button.addEventListener("transitionend", removeTransition));
@@ -135,6 +138,8 @@ function playRound (e) {
     
 
     function playAgain () {
+        
+        instructions.classList.toggle("hidden");
         buttonsContainer.classList.toggle("displayed");
         // Remove the rock, paper and scissors buttons
         buttonsContainer.classList.toggle("hidden");
