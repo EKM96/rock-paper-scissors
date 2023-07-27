@@ -1,7 +1,6 @@
 // List of query selectors
 const buttons = document.querySelectorAll("#buttons-container button");
 const roundResult = document.querySelector("#round-result");
-
 const finalResult = document.querySelector("#final-result");
 const buttonsContainer = document.querySelector("#buttons-container");
 const resultsContainer = document.querySelector("#results-container");
@@ -16,8 +15,6 @@ const buttonsAudio = document.querySelector("#buttons-audio");
 const loseAudio = document.querySelector("#lose-audio");
 const winAudio = document.querySelector("#win-audio");
 
-
-
 playAgainButton.addEventListener("click", ()=> {
     buttonsAudio.play();
     buttonsContainer.classList.toggle("displayed");
@@ -28,7 +25,6 @@ playAgainButton.addEventListener("click", ()=> {
     finalResult.textContent = "";
     playerScoreSelector.textContent = `${playerScore}`;
     computerScoreSelector.textContent = `${computerScore}`;
-
 });
 
 buttons.forEach(button => button.addEventListener("transitionend", removeTransition));
@@ -40,12 +36,9 @@ function removeTransition(e) {
     }
 }
 
-
-
 // Initial playing score
 let playerScore = 0;
 let computerScore = 0;
-
 playerScoreSelector.textContent = `${playerScore}`;
 computerScoreSelector.textContent = `${computerScore}`;
 
@@ -54,17 +47,14 @@ buttons.forEach((button) => {
     button.addEventListener("click", playRound);
 });
 
-
 function playRound (e) {
     buttonsAudio.play();
-    
     e.target.classList.toggle("clicked");
     // A variable containing the clicked option id attribute (rock, paper or scissors);
     let playerSelection = e.target.id;
 
     // Store the return value of the called function
     let computerSelection = getComputerChoice ();
-
 
     // A function that returns a random value between rock, paper or scissors
     function getComputerChoice () {
@@ -101,7 +91,6 @@ function playRound (e) {
             // Add a point to playerScore variable  
             ++playerScore;
             break;
-            
         }
         case lose: {
             roundResult.textContent = `You LOSE this round! \r\n${playerSelection} loses against ${computerSelection}`;
@@ -120,33 +109,22 @@ function playRound (e) {
     playerScoreSelector.textContent = `${playerScore}`;
     computerScoreSelector.textContent = `${computerScore}`;
 
-
-
-
     // When either the player or computer reaches 5 points
     if (playerScore === 5) {
         finalResult.textContent = "You ROCK!! \nYou WON THE GAME!!";
         winAudio.play();
         playAgain();
         // Restart the score
-
-
     }
 
     if (computerScore === 5) {
-
         finalResult.textContent = "You LOSE the game!!";
         loseAudio.play();
         playAgain();
         // Restart the score
-
-
     }
     
-    
-
     function playAgain () {
-        
         instructions.classList.toggle("hidden");
         buttonsContainer.classList.toggle("displayed");
         // Remove the rock, paper and scissors buttons
@@ -156,11 +134,7 @@ function playRound (e) {
         e.target.classList.toggle("clicked");
         playerScore = 0;
         computerScore = 0;
-
     }
-
-
-
 }
     
 

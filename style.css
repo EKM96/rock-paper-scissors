@@ -1,8 +1,6 @@
 html {
     height: 100%;
-    
     font-family: 'Permanent Marker', cursive;
-
 }
 
 body {
@@ -16,14 +14,11 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    
 }
 
 #instructions {
-   
     height: 25%;
-    color: turquoise;
-    
+    color: turquoise; 
 }
 
 #player-header,
@@ -49,33 +44,26 @@ body {
 
 .format {
     font-family: 'Permanent Marker', cursive;
-
     --b: 7px;   /* border thickness */
     --s: .45em; /* size of the corner */
-
     padding: calc(.5em + var(--s)) calc(.9em + var(--s));
     color: var(--color);
     --_p: var(--s);
     background:
     conic-gradient(from 90deg at var(--b) var(--b),#0000 90deg,var(--color) 0)
-    var(--_p) var(--_p)/calc(100% - var(--b) - 2*var(--_p)) calc(100% - var(--b) - 2*var(--_p));
-    
+    var(--_p) var(--_p)/calc(100% - var(--b) - 2*var(--_p)) calc(100% - var(--b) - 2*var(--_p)); 
     outline: var(--b) solid #0000;
-    outline-offset: .6em;
-    
+    outline-offset: .6em;  
     border: 0;
-
     /* Button slanted */
     -ms-transform: skewX(-8deg);
     -webkit-transform: skewX(-8deg);
     transform: skewX(-8deg);
-
     font-size: 28px;
     --b: 6px;   /* border thickness */
     --color: white;
     transition: all .3s;
     }
-
 
 #again-button {
     font-size: 22px; 
@@ -96,7 +84,6 @@ body {
 }
 
 #final-result {  
-
     font-size: 60px;
     margin-top: 40px;
     margin-bottom: 40px;
@@ -108,16 +95,13 @@ body {
     display: flex;
     justify-content: center;
     align-items: flex-end;
-
 }
 
 #score-separator {
     font-size: 100px;
     align-self: center;
     margin-right: 10px;
- 
 }
-
 
 .clicked {
     transform: skewX(-8deg) scale(1.3);

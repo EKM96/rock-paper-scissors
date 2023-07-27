@@ -8,10 +8,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap');
+    </style>
   </head>
 
   <body>
-      <p id="instructions">Play against the computer,</br>
+      <p id="instructions">Play against the computer,<br>
           The first to win five rounds wins!!
       </p>
       <div id="buttons-container" class="displayed">
@@ -32,20 +35,13 @@
             <div id="computer-score"></div>
           </div>
         </div>
-        <div id="round-result"></div>
-          
+        <div id="round-result"></div>       
       </div>
-      </div id="again-button-container">
+      <div id="again-button-container">
           <button id="again-button" class="format hidden">Play again!!</button>
       </div>
       <audio id="buttons-audio" src="./sounds/buttons-audio.mp3"></audio>
       <audio id="lose-audio" src="./sounds/lose-sound.mp3"></audio>
       <audio id="win-audio" src="./sounds/win-sound.mp3"></audio>
-      
-
   </body>
-
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap');
-  </style>
 </html>
