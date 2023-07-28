@@ -107,3 +107,8 @@ body {
     transform: skewX(-8deg) scale(1.3);
     --color: #ffc600;
 }
+
+#again-button-container {
+    display: flex;
+    justify-content: center;
+}
